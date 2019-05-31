@@ -1,0 +1,82 @@
+// Copyright 2019 Arthur Sonzogni. All rights reserved.
+// Use of this source code is governed by the MIT license that can be found in
+// the LICENSE file.
+
+#include "asm-dom.hpp"
+#include <emscripten/val.h>
+#include <functional>
+#include <string>
+
+void Render();
+asmdom::VNode *current_view = nullptr;
+
+// State.
+int i = 1;
+std::vector<std::string> actions;
+
+// Actions.
+bool Decrease(emscripten::val) {
+  i--;
+  actions.push_back("Decrease");
+  Render();
+  return true;
+}
+
+bool Increase(emscripten::val) {
+  i++;
+  actions.push_back("Increase");
+  Render();
+  return true;
+}
+
+// Render the view (i.e. replace the main virtual dom).
+void Render() {
+
+  asmdom::Children action_list;
+  for (int i = std::max(0, int(actions.size()) - 10); i < actions.size(); ++i) {
+    std::string label = "action[" + std::to_string(i) + "] = " + actions[i];
+    action_list.push_back(<li>{label}</li>);
+  }
+
+  // The main view.
+  asmdom::VNode* new_node =
+    <div id="root">
+      <h1> This interface has been written in C++!</ h1>
+
+      <div class="button_container">
+        <a (onclick)={Decrease} class="button"> Decrease </a>
+        <a (onclick)={Increase} class="button"> Increase </a>
+      </div>
+
+      <div class="display_i">
+        i = {{std::to_string(i)}}
+      </div>
+
+      <div class="action_list">
+        {...action_list}
+      </div>
+    </div>;
+
+  asmdom::patch(current_view, new_node);
+  current_view = new_node;
+}
+
+int main() {
+  // Initialize asm-dom.
+  asmdom::Config config = asmdom::Config();
+  asmdom::init(config);
+
+  // Replace <div id="root"/> by our virtual dom.
+  emscripten::val document = emscripten::val::global("document");
+  emscripten::val root =
+      document.call<emscripten::val>("getElementById", std::string("root"));
+  current_view = <div>Initial view</div>;
+  asmdom::patch(root, current_view);
+
+  // Update the virtual dom.
+  Render();
+
+  return 0;
+};
+
+// vim: filetype=cpp
