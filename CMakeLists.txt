@@ -8,13 +8,12 @@ project(asm-dom-cmake
   VERSION 0.1.0
 )
 
+include(cmake/release-mode.cmake)
 include(cmake/gccx.cmake)
 include(cmake/asm-dom.cmake)
 
 gccx(src/main.cpx)
-
 add_executable(main src/main.cpp)
-
 set_property(TARGET main PROPERTY CXX_STANDARD 11)
 target_link_libraries(main PRIVATE asm-dom)
 

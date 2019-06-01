@@ -20,10 +20,7 @@ if(NOT asm-dom_POPULATED)
     ${asm-dom_SOURCE_DIR}/cpp/asm-dom-server.hpp
   )
   set_property(TARGET asm-dom PROPERTY CXX_STANDARD 11)
-  target_include_directories(asm-dom
-    PUBLIC
-      ${asm-dom_SOURCE_DIR}/cpp/
-  )
+  target_include_directories(asm-dom PUBLIC ${asm-dom_SOURCE_DIR}/cpp/)
   configure_file(
     ${asm-dom_SOURCE_DIR}/dist/cpp/asm-dom.js
     ${CMAKE_CURRENT_BINARY_DIR}/asm-dom.js
