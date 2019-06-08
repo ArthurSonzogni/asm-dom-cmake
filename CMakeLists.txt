@@ -8,8 +8,14 @@ project(asm-dom-cmake
   VERSION 0.1.0
 )
 
+
+# If needed, in release mode, use emscripten optimizations flags.
 include(cmake/release-mode.cmake)
+
+# Install gccx if needed. Defines the gccx(..) function to transpile cpx to cpp.
 include(cmake/gccx.cmake)
+
+# Add the asm-dom library.
 include(cmake/asm-dom.cmake)
 
 gccx(src/main.cpx)

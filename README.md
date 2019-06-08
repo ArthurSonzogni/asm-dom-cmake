@@ -1,25 +1,18 @@
 # asm-dom-cmake
 
-[Demo page](http://arthursonzogni.github.io/asm-dom-cmake/)
-
 A web interface entirely built using C++.
 This is possible thanks to [asm-dom](https://github.com/mbasso/asm-dom) and 
 [gccx](https://github.com/mbasso/gccx) (JSX like syntax for C++).
 
-Contrary to [other examples](https://github.com/ArthurSonzogni/asm-dom-starter),
-this is the one using only CMake. No crazy JavaScript tools (webpack, npm, ...). 
-
-Main file: [main.cpx](./src/main.cpx)
+* [Demo page](http://arthursonzogni.github.io/asm-dom-cmake/)
+* Use only CMake (no crazy Javascript tool, only C++)
+* Self contained (cmake will download things for you)
 
 # How to build?
 
-* Install [emscripten](https://emscripten.org/docs/getting_started/downloads.html)
-* Install gccx:
-~~~bash
-npm install -g gccx
-~~~
+[![asciicast](https://asciinema.org/a/xLGp7D6nkqgCEZoSTM7LdO5QT.svg)](https://asciinema.org/a/xLGp7D6nkqgCEZoSTM7LdO5QT)
 
-* Build using emscripten
+* Make sure cmake, emscripten and npm are installed.
 ~~~bash
 mkdir build
 cd build

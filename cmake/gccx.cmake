@@ -2,6 +2,14 @@
 # Use of this source code is governed by the MIT license that can be found in
 # the LICENSE file.
 
+# gccx target is completed whenever the "gccx" command is available.
+find_program(gccx-found gccx)
+if (NOT gccx-found)
+  add_custom_target(gccx COMMAND npm install -g gccx)
+else()
+  add_custom_target(gccx)
+endif()
+
 # Function
 #   gccx(<file.cx>)
 #
@@ -30,5 +38,7 @@ function(gccx source)
       -o ${gen_dir}/${name}.cpp
     MAIN_DEPENDENCY
       ${src_dir}/${name}.cpx
+    DEPENDS
+      gccx
     )
 endfunction()

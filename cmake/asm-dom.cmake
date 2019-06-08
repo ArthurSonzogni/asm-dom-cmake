@@ -2,12 +2,11 @@
 # Use of this source code is governed by the MIT license that can be found in
 # the LICENSE file.
 
+message(STATUS "Checking for asm-dom: Please wait")
 include(FetchContent)
 FetchContent_Declare(asm-dom
-  #GIT_REPOSITORY https://github.com/mbasso/asm-dom
-  #GIT_TAG 0.6.2
-
-  GIT_REPOSITORY https://github.com/ArthurSonzogni/asm-dom
+  GIT_REPOSITORY https://github.com/mbasso/asm-dom
+  GIT_TAG 49131a4ebe26383bafea213167561bffa2024f7c
 )
 
 FetchContent_GetProperties(asm-dom)
@@ -29,3 +28,4 @@ if(NOT asm-dom_POPULATED)
   string(APPEND CMAKE_CXX_FLAGS " -s EXTRA_EXPORTED_RUNTIME_METHODS='UTF8ToString'")
   string(APPEND CMAKE_CXX_FLAGS " -s WASM=1 --bind")
 endif()
+message(STATUS "Checking for asm-dom: DONE")
