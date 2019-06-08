@@ -1,11 +1,12 @@
 # asm-dom-cmake
 
-A web interface entirely built using C++.
+Simple starter project: A web interface entirely built using C++ and cmake.
+
 This is possible thanks to [asm-dom](https://github.com/mbasso/asm-dom) and 
 [gccx](https://github.com/mbasso/gccx) (JSX like syntax for C++).
 
 * [Demo page](http://arthursonzogni.github.io/asm-dom-cmake/)
-* Use only CMake (no crazy Javascript tool, only C++)
+* Use only CMake (no crazy Javascript tool, only C++ :heart:)
 * Self contained (cmake will download things for you)
 
 # How to build?
