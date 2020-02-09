@@ -8,7 +8,6 @@ project(asm-dom-cmake
   VERSION 0.1.0
 )
 
-
 # If needed, in release mode, use emscripten optimizations flags.
 include(cmake/release-mode.cmake)
 
