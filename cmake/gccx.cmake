@@ -3,9 +3,8 @@
 # the LICENSE file.
 
 # gccx target is completed whenever the "gccx" command is available.
-find_program(gccx-found gccx)
-if (NOT gccx-found)
-  execute_process(COMMAND npm install -g gccx)
+if (NOT EXISTS ${CMAKE_CURRENT_BINARY_DIR}/node_modules/.bin/gccx)
+  execute_process(COMMAND npm install gccx)
 endif()
 
 # Function
@@ -30,7 +29,7 @@ function(gccx source)
     OUTPUT
       ${gen_dir}/${name}.cpp
     COMMAND
-      gccx
+      ${CMAKE_CURRENT_BINARY_DIR}/node_modules/.bin/gccx
     ARGS
       ${src_dir}/${name}.cpx
       -o ${gen_dir}/${name}.cpp
