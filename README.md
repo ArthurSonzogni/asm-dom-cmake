@@ -14,14 +14,14 @@ This is possible thanks to [asm-dom](https://github.com/mbasso/asm-dom) and
 [![asciicast](https://asciinema.org/a/xLGp7D6nkqgCEZoSTM7LdO5QT.svg)](https://asciinema.org/a/xLGp7D6nkqgCEZoSTM7LdO5QT)
 
 * Make sure cmake, emscripten and npm are installed.
-~~~bash
+```sh
 mkdir build
 cd build
 emcmake cmake ..
 make
-~~~
+```
 
-* Create a local server and navigate [http://localhost:8000](http://localhost:8000)
-~~~
-python -m SimpleHTTPServer 8000
-~~~
+* Create a local server and navigate [http://localhost:6931](http://localhost:6931)
+```sh
+emrun .
+```
