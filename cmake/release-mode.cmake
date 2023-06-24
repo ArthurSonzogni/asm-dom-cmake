@@ -1,6 +1,4 @@
 if (CMAKE_BUILD_TYPE STREQUAL "Release")
-  string(APPEND CMAKE_CXX_FLAGS " -Os")
-  add_compile_options(-Os)
   add_compile_options(-O3)
   add_compile_options(-flto)
   add_compile_options(-g0)
