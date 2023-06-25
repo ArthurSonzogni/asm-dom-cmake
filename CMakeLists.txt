@@ -2,7 +2,7 @@
 # Use of this source code is governed by the MIT license that can be found in
 # the LICENSE file.
 
-cmake_minimum_required (VERSION 3.11)
+cmake_minimum_required (VERSION 3.13)
 project(asm-dom-cmake
   LANGUAGES CXX
   VERSION 0.1.0
